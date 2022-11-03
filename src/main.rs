@@ -35,7 +35,7 @@ fn main() {
         match c.unwrap() {
             Key::Char('q') => break,
             Key::Char('y') => shoot_dice(),
-            _ => {}
+            _ => {} 
         }
         stdout.flush().unwrap();
 
@@ -82,7 +82,7 @@ fn shoot_dice() {
     let die_2 = rng.gen_range(1..7);
     let tot = die_1 + die_2;
     // output of user pressing the y key. 
-    writeln!(stdout, "{}{}die 1 === {}{}die 2 === {}{}--------------{}total = {}{}{}", 
+    writeln!(stdout, "{}{}die 1 === {}{}die 2 === {}{}--------------{}total = {}{}{}{}q to quit. y to reshoot.", 
              termion::clear::All,
              termion::cursor::Goto(1,1),
              die_1,
@@ -96,7 +96,8 @@ fn shoot_dice() {
                 "you WON"
              }else{
                 "Roll again!"
-             })
+             },
+             termion::cursor::Goto(1,6))
             .ok();
 
     stdout.flush().unwrap();

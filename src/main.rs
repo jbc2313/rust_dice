@@ -79,8 +79,9 @@ fn shoot_dice() {
 
     let die_1 = rng.gen_range(1..7);
     let die_2 = rng.gen_range(1..7);
+    let tot = die_1 + die_2;
     // output of user pressing the y key. 
-    writeln!(stdout, "{}{}die 1 === {}{}die 2 === {}{}--------------{}total = {}", 
+    writeln!(stdout, "{}{}die 1 === {}{}die 2 === {}{}--------------{}total = {}{}{}", 
              termion::clear::All,
              termion::cursor::Goto(1,1),
              die_1,
@@ -88,7 +89,15 @@ fn shoot_dice() {
              die_2,
              termion::cursor::Goto(1,3),
              termion::cursor::Goto(1,4),
-             die_1+die_2);
+             tot,
+             termion::cursor::Goto(1,5,),
+             if tot == 7 {
+                "you WON"
+             }else{
+                "Roll again!"
+             })
+            .ok();
 
     stdout.flush().unwrap();
+
 }

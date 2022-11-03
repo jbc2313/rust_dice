@@ -17,9 +17,10 @@ fn main() {
     // this is from termion
     let mut stdout = stdout().into_raw_mode().unwrap();
     write!(stdout,
-            "{}{}q to exit. Type stuff and so on.{}",
+            "{}{}Lets shoot some Dice!!{}q to exit. y to shoot.{}",
             termion::clear::All,
             termion::cursor::Goto(1,1),
+            termion::cursor::Goto(1,2),
             termion::cursor::Hide)
             .unwrap();
     stdout.flush().unwrap();

@@ -1,5 +1,10 @@
 use rand::Rng;
 use std::io;
+use termion::event::Key;
+use termion::input::TermRead;
+use termion::raw::IntoRawMode;
+
+
 
 
 fn main() -> io::Result<()> {
@@ -25,7 +30,7 @@ fn main() -> io::Result<()> {
     
     if user_input == "yes\n" {
         println!("die 1 === {}", die_1);
-        println!("die 1 === {}", die_2);
+        println!("die 2 === {}", die_2);
     }
 
     println!("=======================================");

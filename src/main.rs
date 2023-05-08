@@ -93,9 +93,9 @@ fn shoot_dice() {
              tot,
              termion::cursor::Goto(1,5,),
              if tot == 7 {
-                "you WON"
+                "WOW 7! You WON!"
              }else{
-                "Roll again!"
+                "Sorry, Roll again!"
              },
              termion::cursor::Goto(1,6))
             .ok();

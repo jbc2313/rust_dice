@@ -17,7 +17,7 @@ fn main() {
     // this is from termion
     let mut stdout = stdout().into_raw_mode().unwrap();
     write!(stdout,
-            "{}{}Lets shoot some Dice!!{}q to exit. y to shoot.{}",
+            "{}{}Lets shoot some Dice!!{}Press 'q' to exit and 'y' to shoot the dice.{}",
             termion::clear::All,
             termion::cursor::Goto(1,1),
             termion::cursor::Goto(1,2),
@@ -82,7 +82,7 @@ fn shoot_dice() {
     let die_2 = rng.gen_range(1..7);
     let tot = die_1 + die_2;
     // output of user pressing the y key. 
-    writeln!(stdout, "{}{}die 1 === {}{}die 2 === {}{}--------------{}total = {}{}{}{}q to quit. y to reshoot.", 
+    writeln!(stdout, "{}{}die 1 = {}{}die 2 = {}{}--------------{}Total: {}{}{}{}===================={}Press 'q' to quit and exit.{}Press 'y' to reshoot the dice.", 
              termion::clear::All,
              termion::cursor::Goto(1,1),
              die_1,
@@ -91,13 +91,15 @@ fn shoot_dice() {
              termion::cursor::Goto(1,3),
              termion::cursor::Goto(1,4),
              tot,
-             termion::cursor::Goto(1,5,),
+             termion::cursor::Goto(1,6,),
              if tot == 7 {
                 "WOW 7! You WON!"
              }else{
                 "Sorry, Roll again!"
              },
-             termion::cursor::Goto(1,6))
+             termion::cursor::Goto(1,8,),
+             termion::cursor::Goto(1,9),
+             termion::cursor::Goto(1,10))
             .ok();
 
     stdout.flush().unwrap();

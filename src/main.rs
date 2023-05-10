@@ -43,36 +43,9 @@ fn main() {
 
     write!(stdout, "{}", termion::cursor::Show).unwrap();
 
-    
-
-
-
-
-
-    // this is old code used before temion was added
-
-    // let b1 = stdin.read_line(&mut user_input).unwrap();
-    
-    // if user_input == "no\n" {
-    //    println!("you said no!");
-    //    println!("I guess you dont like dice!");
-    //    println!("BYE!");
-    // }
-    
-
-
-    // setup for dice here 
-    // if user_input == "yes\n" {
-    
-
-    // }
-
-    // println!("=======================================");
-    // println!("user input 'debug' = {:?}", user_input);
-    // println!("user input was {} ", user_input);
-    // println!("no of bytes read, {}", b1);
-    //Ok(())
 }
+
+
 
 fn shoot_dice() {
     let mut rng = rand::thread_rng();

@@ -8,7 +8,7 @@ use termion::raw::IntoRawMode;
 
 
 fn main() {
-    println!("Hello, world!");
+    println!("Welcome to Rusty Dice!");
     println!("Lets shoot some dice!");
 
     //let mut user_input = String::new();

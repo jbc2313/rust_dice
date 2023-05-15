@@ -10,6 +10,9 @@ fn main() {
     println!("Welcome to Rusty Dice!");
     println!("Lets shoot some dice!");
 
+    //score variable for user, keeps recored of total wins
+    let mut user_score: i8 = 0;
+
     //let mut user_input = String::new();
     let stdin = stdin();
     
@@ -34,7 +37,7 @@ fn main() {
 
         match c.unwrap() {
             Key::Char('q') => break,
-            Key::Char('y') => shoot_dice(),
+            Key::Char('y') => shoot_dice(&mut user_score),
             _ => {} 
         }
         stdout.flush().unwrap();
@@ -44,18 +47,22 @@ fn main() {
     write!(stdout, "{}", termion::cursor::Show).unwrap();
 
     // says thankss
-    exit();
+    exit(&user_score);
 }
 
 
 
-fn shoot_dice() {
+fn shoot_dice(score: &mut i8) {
     let mut rng = rand::thread_rng();
     let mut stdout = stdout().into_raw_mode().unwrap();
 
     let die_1 = rng.gen_range(1..7);
     let die_2 = rng.gen_range(1..7);
     let tot = die_1 + die_2;
+
+    if tot == 7{
+        *score = *score + 1;
+    }
     
     // output of user pressing the y key. 
     writeln!(stdout, "{}{}die 1 = {}{}die 2 = {}{}--------------{}Total: {}{}{}{}===================={}Press 'q' to quit and exit.{}Press 'y' to reshoot the dice.", 
@@ -82,11 +89,13 @@ fn shoot_dice() {
 
 }
 
-fn exit() {
+fn exit(score: &i8) {
     let mut stdout = stdout().into_raw_mode().unwrap();
-    writeln!(stdout, "{}{}Thanks for playing!",
+    writeln!(stdout, "{}{}Thanks for playing!{}You won {} times.",
              termion::clear::All,
-             termion::cursor::Goto(1,1))
+             termion::cursor::Goto(1,1),
+             termion::cursor::Goto(1,2),
+             score)
              .ok();
 
     stdout.flush().unwrap();

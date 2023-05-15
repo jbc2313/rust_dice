@@ -6,7 +6,6 @@ use termion::raw::IntoRawMode;
 
 
 
-
 fn main() {
     println!("Welcome to Rusty Dice!");
     println!("Lets shoot some dice!");
@@ -16,8 +15,9 @@ fn main() {
     
     // this is from termion
     let mut stdout = stdout().into_raw_mode().unwrap();
+
     write!(stdout,
-            "{}{}Lets shoot some Dice!!{}Press 'q' to exit and 'y' to shoot the dice.{}",
+            "{}{}Are you ready?!{}Press 'q' to exit and 'y' to shoot the dice.{}",
             termion::clear::All,
             termion::cursor::Goto(1,1),
             termion::cursor::Goto(1,2),
@@ -38,11 +38,13 @@ fn main() {
             _ => {} 
         }
         stdout.flush().unwrap();
-
     }
 
+    //cleans up screen.. i think.
     write!(stdout, "{}", termion::cursor::Show).unwrap();
 
+    // says thankss
+    exit();
 }
 
 
@@ -54,6 +56,7 @@ fn shoot_dice() {
     let die_1 = rng.gen_range(1..7);
     let die_2 = rng.gen_range(1..7);
     let tot = die_1 + die_2;
+    
     // output of user pressing the y key. 
     writeln!(stdout, "{}{}die 1 = {}{}die 2 = {}{}--------------{}Total: {}{}{}{}===================={}Press 'q' to quit and exit.{}Press 'y' to reshoot the dice.", 
              termion::clear::All,
@@ -77,4 +80,14 @@ fn shoot_dice() {
 
     stdout.flush().unwrap();
 
+}
+
+fn exit() {
+    let mut stdout = stdout().into_raw_mode().unwrap();
+    writeln!(stdout, "{}{}Thanks for playing!",
+             termion::clear::All,
+             termion::cursor::Goto(1,1))
+             .ok();
+
+    stdout.flush().unwrap();
 }

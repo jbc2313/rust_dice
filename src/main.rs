@@ -8,7 +8,7 @@ use termion::raw::IntoRawMode;
 
 fn main() {
     println!("Welcome to Rusty Dice!");
-    println!("Lets shoot some dice!");
+    println!("Ready to shoot some dice!");
 
     //score variable for user, keeps recored of total wins
     let mut user_score: i8 = 0;

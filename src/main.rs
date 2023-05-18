@@ -76,7 +76,7 @@ fn shoot_dice(score: &mut i8) {
              tot,
              termion::cursor::Goto(1,6,),
              if tot == 7 {
-                "WOW 7! You WON!"
+                "7! You WIN!"
              }else{
                 "Sorry, Roll again!"
              },

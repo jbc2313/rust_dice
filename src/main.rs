@@ -90,8 +90,9 @@ fn shoot_dice(score: &mut i8) {
 }
 
 fn exit(score: &i8) {
+    // Lets add total losses here too.
     let mut stdout = stdout().into_raw_mode().unwrap();
-    writeln!(stdout, "{}{}Thanks for playing!{}You won {} times.",
+    writeln!(stdout, "{}{}Thanks for playing!{}You won {} times."
              termion::clear::All,
              termion::cursor::Goto(1,1),
              termion::cursor::Goto(1,2),

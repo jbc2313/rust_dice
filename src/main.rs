@@ -12,6 +12,7 @@ fn main() {
 
     //score variable for user, keeps recored of total wins
     let mut user_score: i8 = 0;
+    let mut user_loses: i8 = 0;
 
     //let mut user_input = String::new();
     let stdin = stdin();
@@ -37,7 +38,7 @@ fn main() {
 
         match c.unwrap() {
             Key::Char('q') => break,
-            Key::Char('y') => shoot_dice(&mut user_score),
+            Key::Char('y') => shoot_dice(&mut user_score, &mut user_loses),
             _ => {} 
         }
         stdout.flush().unwrap();
@@ -47,12 +48,12 @@ fn main() {
     write!(stdout, "{}", termion::cursor::Show).unwrap();
 
     // says thankss
-    exit(&user_score);
+    exit(&user_score, &user_loses);
 }
 
 
 
-fn shoot_dice(score: &mut i8) {
+fn shoot_dice(score: &mut i8, loses: &mut i8) {
     let mut rng = rand::thread_rng();
     let mut stdout = stdout().into_raw_mode().unwrap();
 
@@ -62,6 +63,8 @@ fn shoot_dice(score: &mut i8) {
 
     if tot == 7{
         *score = *score + 1;
+    }else{
+        *loses = *loses + 1;
     }
     
     // output of user pressing the y key. 
@@ -89,14 +92,16 @@ fn shoot_dice(score: &mut i8) {
 
 }
 
-fn exit(score: &i8) {
+fn exit(score: &i8, loses: &i8) {
     // Lets add total losses here too.
     let mut stdout = stdout().into_raw_mode().unwrap();
-    writeln!(stdout, "{}{}Thanks for playing!{}You won {} times."
+    writeln!(stdout, "{}{}Thanks for playing!{}You won {} times.{}You lost {} times.",
              termion::clear::All,
              termion::cursor::Goto(1,1),
              termion::cursor::Goto(1,2),
-             score)
+             score,
+             termion::cursor::Goto(1,3),
+             loses)
              .ok();
 
     stdout.flush().unwrap();

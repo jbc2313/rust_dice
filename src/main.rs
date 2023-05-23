@@ -96,7 +96,7 @@ fn shoot_dice(score: &mut i8, loses: &mut i8) {
              }else{""},
              termion::cursor::Goto(40,7),
              if tot == 7 {
-               "||      |        |     ||"
+               "||     |         |     ||"
              }else{""},
              termion::cursor::Goto(40,8),
              if tot == 7 {

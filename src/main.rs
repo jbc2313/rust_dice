@@ -5,12 +5,10 @@ use termion::input::TermRead;
 use termion::raw::IntoRawMode;
 
 // this is my first attempt at a complete rust program.
-// it is a command line program that allows you to roll dice.
-// the plan is to allow for different 'modes',
-// a mode where you try and roll a 7 to win.
-// a mode where you just roll the dice, for real world purposes.
-// each mode should allow you pick the number of dice, within reason.
-// maybe a mode to pick the type of die, ie 20 sided
+// it is a command line program that allows you to roll 2 six-sided dice.
+// if you roll a 7, you win.
+// after each roll, it displays what the two dice landed on
+// 'y' will roll again, 'q' quits the game
 
 fn main() {
     println!("Welcome to Rusty Dice!");

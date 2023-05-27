@@ -11,6 +11,8 @@ use termion::raw::IntoRawMode;
 // 'y' will roll again, 'q' quits the game
 
 fn main() {
+
+    // Welcome Message
     println!("Welcome to Rusty Dice!");
     println!("Ready to shoot some dice!");
 
@@ -24,6 +26,7 @@ fn main() {
     // this is from termion
     let mut stdout = stdout().into_raw_mode().unwrap();
 
+    // Start of Game
     write!(stdout,
             "{}{}Are you ready?!{}Press 'q' to exit and 'y' to shoot the dice.{}",
             termion::clear::All,
@@ -33,6 +36,7 @@ fn main() {
             .unwrap();
     stdout.flush().unwrap();
 
+    // This is the main game loop
     for c in stdin.keys() {
         write!(stdout,
                "{}{}",
@@ -41,7 +45,7 @@ fn main() {
                 .unwrap();
 
         match c.unwrap() {
-            Key::Char('q') => break,
+            Key::Char('q') => break, //breaks out of main game loop
             Key::Char('y') => shoot_dice(&mut user_score, &mut user_loses),
             _ => {} 
         }
@@ -56,7 +60,7 @@ fn main() {
 }
 
 
-
+// this is the main game function
 fn shoot_dice(score: &mut i8, loses: &mut i8) {
     let mut rng = rand::thread_rng();
     let mut stdout = stdout().into_raw_mode().unwrap();
@@ -128,6 +132,7 @@ fn shoot_dice(score: &mut i8, loses: &mut i8) {
 
 }
 
+// displays the total score at exit of game
 fn exit(score: &i8, loses: &i8) {
     // Lets add total losses here too.
     let mut stdout = stdout().into_raw_mode().unwrap();

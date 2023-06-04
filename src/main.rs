@@ -77,44 +77,12 @@ fn shoot_dice(score: &mut i8, loses: &mut i8) {
 
     // going to remove the smiling guy :(
     // output of user pressing the y key. 
-    writeln!(stdout, "{}{}die 1 = {}{}die 2 = {} {}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{} {}--------------{}Total: {}{}{}{}===================={}Press 'q' to quit and exit.{}Press 'y' to reshoot the dice.", 
+    writeln!(stdout, "{}{}die 1 = {}{}die 2 = {} {}--------------{}Total: {}{}{}{}===================={}Press 'q' to quit and exit.{}Press 'y' to reshoot the dice.", 
              termion::clear::All,
              termion::cursor::Goto(1,1),
              die_1,
              termion::cursor::Goto(1,2),
              die_2,
-             termion::cursor::Goto(40,2),
-             if tot == 7 {
-                " ======================"
-             }else{""},
-             termion::cursor::Goto(40,3),
-             if tot == 7 {
-                "||                     ||"
-             }else{""},
-             termion::cursor::Goto(40,4),
-             if tot == 7 {
-               "||      **    **       ||"
-             }else{""},
-             termion::cursor::Goto(40,5),
-             if tot == 7 {
-               "||                     ||"
-             }else{""},
-             termion::cursor::Goto(40,6),
-             if tot == 7 {
-               "||      ---------      ||"
-             }else{""},
-             termion::cursor::Goto(40,7),
-             if tot == 7 {
-               "||     |         |     ||"
-             }else{""},
-             termion::cursor::Goto(40,8),
-             if tot == 7 {
-               "||      ---------      ||"
-             }else{""},
-             termion::cursor::Goto(40,9),
-             if tot == 7 {
-               "========================="
-             }else{""},
              termion::cursor::Goto(1,3),
              termion::cursor::Goto(1,4),
              tot,

@@ -101,6 +101,14 @@ fn shoot_dice(score: &mut i8, loses: &mut i8) {
 
 }
 
+fn get_num_dice() -> i8 {
+   let mut num_dice: i8 = 0;
+
+   return num_dice;
+}
+
+
+
 // displays the total score at exit of game
 fn exit(score: &i8, loses: &i8) {
     // Lets add total losses here too.

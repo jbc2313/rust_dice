@@ -107,7 +107,11 @@ fn get_num_dice() -> i8 {
    return num_dice;
 }
 
+fn get_sides_dice() -> i8 {
+    let mut sides_dice: i8 = 6;
 
+    return sides_dice;
+}
 
 // displays the total score at exit of game
 fn exit(score: &i8, loses: &i8) {

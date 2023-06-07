@@ -4,7 +4,6 @@ use termion::event::Key;
 use termion::input::TermRead;
 use termion::raw::IntoRawMode;
 
-// this is my first attempt at a complete rust program.
 // it is a command line program that allows you to roll 2 six-sided dice.
 // if you roll a 7, you win.
 // after each roll, it displays what the two dice landed on
@@ -102,9 +101,16 @@ fn shoot_dice(score: &mut i8, loses: &mut i8) {
 }
 
 fn get_num_dice() -> i8 {
-   let mut num_dice: i8 = 0;
-
-   return num_dice;
+    let mut stdout = stdout().into_raw_mode().unwrap();
+    let mut num_dice: i8 = 0;
+    
+    writeln!(stdout, "{}{}How many dice do you want to roll?{}{}",
+             termion::clear::All,
+             termion::cursor::Goto(1,1),
+             termion::cursor::Goto(1,2),
+             num_dice).ok();
+    
+    return num_dice;
 }
 
 fn get_sides_dice() -> i8 {

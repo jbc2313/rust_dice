@@ -18,35 +18,66 @@ fn main() {
     //score variable for user, keeps recored of total wins
     let mut user_score: i8 = 0;
     let mut user_loses: i8 = 0;
+    let mut num_user_dice: i8 = 0;
 
     //let mut user_input = String::new();
-    let stdin = stdin();
-    
+    let stdin1 = stdin();
+    let stdin2 = stdin();
     // this is from termion
     let mut stdout = stdout().into_raw_mode().unwrap();
 
+
+    // Get number of dice
+    write!(stdout,
+           "{}{}Please enter the number of dice you want to roll.{}",
+           termion::clear::All,
+           termion::cursor::Goto(1,1),
+           termion::cursor::Hide,
+          ).unwrap();
+    stdout.flush().unwrap();
+
+    for x in stdin1.keys() {
+        if num_user_dice > 0 {break};
+        write!(stdout,
+               "{}{}",
+                termion::cursor::Goto(1,1),
+                termion::clear::CurrentLine)
+                .unwrap();
+        match x.unwrap() {
+            Key::Char('1') => num_user_dice = 1,
+            Key::Char('2') => num_user_dice = 2,
+            Key::Char('3') => num_user_dice = 3,
+            Key::Char('4') => num_user_dice = 4,
+            _ => {}
+        }
+        stdout.flush().unwrap();
+    }
+
+
+
     // Start of Game
     write!(stdout,
-            "{}{}Are you ready?!{}Press 'q' to exit and 'y' to shoot the dice.{}",
+           "{}{}You chose {} dice. Are you ready?!{}Press 'q' to exit and 'y' to shoot the dice.{}",
             termion::clear::All,
             termion::cursor::Goto(1,1),
+            num_user_dice,
             termion::cursor::Goto(1,2),
             termion::cursor::Hide)
             .unwrap();
     stdout.flush().unwrap();
 
     // This is the main game loop
-    for c in stdin.keys() {
+    for c in stdin2.keys() {
         write!(stdout,
                "{}{}",
                termion::cursor::Goto(1,1),
                termion::clear::CurrentLine)
-                .unwrap();
+               .unwrap();
 
         match c.unwrap() {
             Key::Char('q') => break, //breaks out of main game loop
             Key::Char('y') => shoot_dice(&mut user_score, &mut user_loses),
-            _ => {} 
+            _ => {}
         }
         stdout.flush().unwrap();
     }
@@ -102,17 +133,38 @@ fn shoot_dice(score: &mut i8, loses: &mut i8) {
 
 fn get_num_dice() -> i8 {
     let mut stdout = stdout().into_raw_mode().unwrap();
+    let stdin = stdin();
     let mut num_dice: i8 = 0;
     
-    writeln!(stdout, "{}{}How many dice do you want to roll?{}{}",
+    writeln!(stdout, "{}{}How many dice do you want to roll?{}",
              termion::clear::All,
              termion::cursor::Goto(1,1),
-             termion::cursor::Goto(1,2),
-             num_dice).ok();
-    
+             termion::cursor::Hide).ok();
+
+    stdout.flush().unwrap();
+
+    for c in stdin.keys() {
+            write!(stdout,
+                "{}{}",
+                termion::cursor::Goto(1,1),
+                termion::clear::CurrentLine)
+                    .unwrap();
+
+            match c.unwrap() {
+                Key::Char('1') => num_dice = 1,
+                Key::Char('2') => num_dice = 2,
+                Key::Char('3') => num_dice = 3,
+                Key::Char('4') => num_dice = 4,
+                _ => {}
+            }
+            stdout.flush().unwrap();
+    }
+
     return num_dice;
 }
 
+
+// this will be implemented later
 fn get_sides_dice() -> i8 {
     let mut sides_dice: i8 = 6;
 

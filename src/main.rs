@@ -36,22 +36,24 @@ fn main() {
           ).unwrap();
     stdout.flush().unwrap();
 
-    for x in stdin1.keys() {
-        if num_user_dice > 0 {break};
-        write!(stdout,
-               "{}{}",
-                termion::cursor::Goto(1,1),
-                termion::clear::CurrentLine)
-                .unwrap();
-        match x.unwrap() {
-            Key::Char('1') => num_user_dice = 1,
-            Key::Char('2') => num_user_dice = 2,
-            Key::Char('3') => num_user_dice = 3,
-            Key::Char('4') => num_user_dice = 4,
-            _ => {}
-        }
-        stdout.flush().unwrap();
-    }
+    num_user_dice = get_num_dice();
+
+    // for x in stdin1.keys() {
+    //     if num_user_dice > 0 {break};
+    //     write!(stdout,
+    //            "{}{}",
+    //             termion::cursor::Goto(1,1),
+    //             termion::clear::CurrentLine)
+    //             .unwrap();
+    //     match x.unwrap() {
+    //         Key::Char('1') => num_user_dice = 1,
+    //         Key::Char('2') => num_user_dice = 2,
+    //         Key::Char('3') => num_user_dice = 3,
+    //         Key::Char('4') => num_user_dice = 4,
+    //         _ => {}
+    //     }
+    //     stdout.flush().unwrap();
+    //}
 
 
 
@@ -139,7 +141,7 @@ fn get_num_dice() -> i8 {
     writeln!(stdout, "{}{}How many dice do you want to roll?{}",
              termion::clear::All,
              termion::cursor::Goto(1,1),
-             termion::cursor::Hide).ok();
+             termion::cursor::Hide).unwrap();
 
     stdout.flush().unwrap();
 
@@ -155,9 +157,12 @@ fn get_num_dice() -> i8 {
                 Key::Char('2') => num_dice = 2,
                 Key::Char('3') => num_dice = 3,
                 Key::Char('4') => num_dice = 4,
-                _ => {}
+                _ => {println!("YOU ENTERED A BAD KEY");
+                      continue;
+                }
             }
             stdout.flush().unwrap();
+            if num_dice > 0 {break};
     }
 
     return num_dice;

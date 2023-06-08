@@ -78,7 +78,7 @@ fn main() {
 
         match c.unwrap() {
             Key::Char('q') => break, //breaks out of main game loop
-            Key::Char('y') => shoot_dice(&mut user_score, &mut user_loses),
+            Key::Char('y') => if num_user_dice == 2 {shoot_two_dice(&mut user_score, &mut user_loses)}else{roll_dice(&num_user_dice)},
             _ => {}
         }
         stdout.flush().unwrap();
@@ -93,7 +93,7 @@ fn main() {
 
 
 // this is the main game function
-fn shoot_dice(score: &mut i8, loses: &mut i8) {
+fn shoot_two_dice(score: &mut i8, loses: &mut i8) {
     let mut rng = rand::thread_rng();
     let mut stdout = stdout().into_raw_mode().unwrap();
 
@@ -132,6 +132,40 @@ fn shoot_dice(score: &mut i8, loses: &mut i8) {
     stdout.flush().unwrap();
 
 }
+
+
+// function when user doesnt select 2 dice. This is just to roll the number of dice and get the sum of all dice.
+// need to add note to end of writeln! that says y to roll again q to quit
+fn roll_dice(num_dice: &i8) {
+    let mut rng = rand::thread_rng();
+    let mut stdout = stdout().into_raw_mode().unwrap();
+    let mut loop_size = *num_dice;
+    let mut dice_vec: Vec<i8> = Vec::new();
+    let mut dice_total: i8 = 0;
+    while loop_size != 0 {
+        let mut a = rng.gen_range(1..7);
+        dice_vec.push(a);
+        loop_size -= 1;
+    }
+
+    let mut dice_vec_iter = dice_vec.iter();
+    for index in dice_vec_iter {
+        dice_total = dice_total + index;
+    }
+
+
+    writeln!(stdout, "{}{} The sum of all {} dice is {}{}",
+                    termion::clear::All,
+                    termion::cursor::Goto(1,1),
+                    num_dice,
+                    dice_total,
+                    termion::cursor::Hide)
+                    .ok();
+
+    stdout.flush().unwrap();
+
+}
+
 
 fn get_num_dice() -> i8 {
     let mut stdout = stdout().into_raw_mode().unwrap();

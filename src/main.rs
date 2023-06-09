@@ -38,24 +38,6 @@ fn main() {
 
     num_user_dice = get_num_dice();
 
-    // for x in stdin1.keys() {
-    //     if num_user_dice > 0 {break};
-    //     write!(stdout,
-    //            "{}{}",
-    //             termion::cursor::Goto(1,1),
-    //             termion::clear::CurrentLine)
-    //             .unwrap();
-    //     match x.unwrap() {
-    //         Key::Char('1') => num_user_dice = 1,
-    //         Key::Char('2') => num_user_dice = 2,
-    //         Key::Char('3') => num_user_dice = 3,
-    //         Key::Char('4') => num_user_dice = 4,
-    //         _ => {}
-    //     }
-    //     stdout.flush().unwrap();
-    //}
-
-
 
     // Start of Game
     write!(stdout,

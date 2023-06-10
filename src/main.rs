@@ -5,9 +5,12 @@ use termion::input::TermRead;
 use termion::raw::IntoRawMode;
 
 // it is a command line program that allows you to roll 2 six-sided dice.
+// you enter the number of dice you want to roll
+// if you select 2 you play a game
 // if you roll a 7, you win.
 // after each roll, it displays what the two dice landed on
 // 'y' will roll again, 'q' quits the game
+// if you select anything other than 2, it is just a dice simulator
 
 fn main() {
 

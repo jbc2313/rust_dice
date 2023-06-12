@@ -189,6 +189,7 @@ fn get_num_dice() -> i8 {
 
 
 // this will be implemented later
+// function to choose the number of sides on the die
 fn get_sides_dice() -> i8 {
     let mut sides_dice: i8 = 6;
 

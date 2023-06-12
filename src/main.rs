@@ -10,7 +10,7 @@ use termion::raw::IntoRawMode;
 // if you roll a 7, you win.
 // after each roll, it displays what the two dice landed on
 // 'y' will roll again, 'q' quits the game
-// if you select anything other than 2, it is just a dice simulator
+// if you select anything other than 2, it is just a dice simulator/virtual dice
 
 fn main() {
 

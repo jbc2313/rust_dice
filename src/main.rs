@@ -128,12 +128,12 @@ fn roll_dice(num_dice: &i8) {
     let mut dice_vec: Vec<i8> = Vec::new();
     let mut dice_total: i8 = 0;
     while loop_size != 0 {
-        let mut a = rng.gen_range(1..7);
+        let a = rng.gen_range(1..7);
         dice_vec.push(a);
         loop_size -= 1;
     }
 
-    let mut dice_vec_iter = dice_vec.iter();
+    let dice_vec_iter = dice_vec.iter();
     for index in dice_vec_iter {
         dice_total = dice_total + index;
     }

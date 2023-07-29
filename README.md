@@ -1,6 +1,6 @@
 # RUSTY DICE 
 
-
+## Shoot Dice in rust.
 
 ### Work IN Progress.
 

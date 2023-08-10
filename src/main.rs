@@ -1,5 +1,6 @@
 use rand::Rng;
 use std::io::{stdout, stdin, Write};
+use std::{thread,time};
 use termion::event::Key;
 use termion::input::TermRead;
 use termion::raw::IntoRawMode;
@@ -15,8 +16,11 @@ use termion::raw::IntoRawMode;
 fn main() {
 
     // Welcome Message
-    println!("Welcome to Rusty Dice!");
+    println!("=======* Rusty Dice *========");
     println!("Get ready to shoot some dice!");
+    // displays welcome message before moving on.
+    let ten_milli_sec = time::Duration::from_millis(10);
+    thread::sleep(ten_milli_sec);
 
     //score variable for user, keeps recored of total wins
     let mut user_score: i8 = 0;

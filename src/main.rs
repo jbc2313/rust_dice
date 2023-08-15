@@ -5,13 +5,18 @@ use termion::event::Key;
 use termion::input::TermRead;
 use termion::raw::IntoRawMode;
 
-// Command line program that allows you to shoot 2 six-sided dice.
-// You enter the number of dice you want to roll.
-// If you select 2, you play a game, similar to craps.
-// If you roll a 7, you win.
-// After each roll, it displays what the two dice landed on.
-// The key 'y' will roll again, 'q' quits the game.
-// If you select anything other than 2, it is just a dice simulator/virtual dice.
+/*
+Command line program that allows you to shoot 2 six-sided dice.
+
+You enter the number of dice you want to roll.
+
+If you select anything other than 2, it is just a dice simulator/virtual dice.
+If you select 2, you play a game, similar to craps.
+If you roll a 7, you win.
+
+After each roll, it displays what the two dice landed on.
+The key 'y' will roll again, 'q' quits the game.
+*/
 
 fn main() {
 

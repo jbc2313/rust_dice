@@ -101,7 +101,6 @@ fn shoot_two_dice(score: &mut i8, loses: &mut i8) {
         *loses = *loses + 1;
     }
 
-    // going to remove the smiling guy :(
     // output of user pressing the y key. 
     writeln!(stdout, "{}{}die 1 = {}{}die 2 = {} {}--------------{}Total: {}{}{}{}===================={}Press 'q' to quit and exit.{}Press 'y' to reshoot the dice.", 
              termion::clear::All,

@@ -1,6 +1,7 @@
 # RUSTY DICE 
 ============================================================
 ## Shoot Dice in rust.
+## Choose the number of dice you throw.
 ### Work IN Progress.
 
 - Simple command line game, the goal is to roll a 7.

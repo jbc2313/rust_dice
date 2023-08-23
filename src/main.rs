@@ -39,7 +39,7 @@ fn main() {
     let mut stdout = stdout().into_raw_mode().unwrap();
 
 
-    // Get number of dice
+    // Get number of dice user wants to shoot
     write!(stdout,
            "{}{}Please enter the number of dice you want to roll.{}",
            termion::clear::All,

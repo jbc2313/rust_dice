@@ -8,4 +8,4 @@
 - If you roll a 7, you win! 
 
 - You can choose how many dice to roll after starting the program.
-- if you choose any number besides 2, you will wont be playing the game, yoou will only be rolling the dice for simulation.
+- If you choose any number besides 2, you will wont be playing the game, yoou will only be rolling the dice for simulation.

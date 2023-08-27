@@ -146,7 +146,6 @@ fn roll_dice(num_dice: &i8) {
         dice_total = dice_total + index;
     }
 
-
     writeln!(stdout, "{}{} The sum of all {} dice is {}{}",
                     termion::clear::All,
                     termion::cursor::Goto(1,1),
@@ -156,7 +155,6 @@ fn roll_dice(num_dice: &i8) {
                     .ok();
 
     stdout.flush().unwrap();
-
 }
 
 

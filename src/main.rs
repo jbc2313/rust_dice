@@ -126,7 +126,6 @@ fn shoot_two_dice(score: &mut i8, loses: &mut i8) {
 
 }
 
-
 // function when user doesnt select 2 dice. This is just to roll the number of dice and get the sum of all dice.
 // need to add note to end of writeln! that says y to roll again q to quit
 fn roll_dice(num_dice: &i8) {
